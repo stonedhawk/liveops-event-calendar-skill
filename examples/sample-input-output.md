@@ -10,7 +10,7 @@ A worked example to show what the skill produces when fed real-shaped data.
 > **Segments:** 92% F2P, 5% minnow, 2.5% dolphin, 0.5% whale. ARPDAU $0.04
 > **Retention:** D1 38%, D7 14%, D30 4.5%
 > **Recent events:** Weekend tournament (1 week ago), daily login streak (running continuously)
-> **Capacity:** 1 small event + 1 large event in the next 4 weeks
+> **Capacity:** 2 large events + 1 small event in the next 4 weeks (3-person team, 2-week sprints)
 
 ---
 
@@ -18,9 +18,9 @@ A worked example to show what the skill produces when fed real-shaped data.
 
 ### Diagnosis
 
-Two leaks. D7 at 14% is borderline below the casual threshold of 15% — habit formation is working but only just. D30 at 4.5% is the real problem; the mid-game has no shape between day 14 and day 30 and the cohort drops out. **Confidence: medium.** I'd want to see the day-by-day curve between D14 and D28 to confirm the drop-off shape, but the headline numbers point at a D30 leak as the priority.
+Two leaks. D7 at 14% is borderline below the casual threshold of 15% — habit formation is working but only just. D30 at 4.5% is the real problem; the mid-game has no shape between day 14 and day 30 and the cohort drops out. D1 at 38% is above the casual threshold of 35%, so onboarding is not the bottleneck. **Confidence: medium.** I'd want to see the day-by-day curve between D14 and D28 to confirm the drop-off shape, but the headline numbers point at a D30 leak as the priority, with D7 as a secondary concern.
 
-Implication for the calendar: focus on D30 with secondary D7 reinforcement. Avoid running anything that competes for attention with the Day 14-21 window where the leak likely sits.
+Implication for the calendar: focus on D30 with secondary D7 reinforcement. Avoid running anything that competes for attention with the Day 14–21 window where the leak likely sits.
 
 ### Primary segment
 
