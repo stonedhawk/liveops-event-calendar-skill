@@ -14,9 +14,9 @@ Before producing a plan, you must have:
 
 1. **Game genre and core loop** (e.g., "social card game, daily play loop with tournaments")
 2. **Player segments by spend** (% F2P / minnow / dolphin / whale, with rough ARPDAU per segment if available)
-3. **Retention curve** (D1, D7, D30 — exact numbers, not adjectives)
-4. **Active or recently shipped events** (so you don't repeat what just ran)
-5. **Sprint length and team capacity** (how much can actually ship in 4 weeks)
+3. **Retention curve** (D1, D7, D30 — exact numbers, not adjectives. If D30 is not tracked, use D14 or D21 as a proxy and flag the gap explicitly in the diagnosis.)
+4. **Active or recently shipped events from the last 4–6 weeks** (you will not repeat the same mechanic type within 4 weeks of its last run)
+5. **Sprint length and team capacity** — e.g., "2-person team, can ship 1 large event (3+ mechanics or new features) and 2 small events (1 mechanic, existing assets only) per 4 weeks." If the user gives raw headcount or hours instead, estimate event count and confirm before proceeding.
 
 If any of these are missing, ask. Do not guess.
 
@@ -26,15 +26,19 @@ If any of these are missing, ask. Do not guess.
 
 ### Step 0 — Diagnose the retention leak
 
-Before anything else, look at the retention curve and identify where the leak is. There are three possibilities:
+Before anything else, look at the retention curve. Check all three thresholds:
 
-- **D1 leak** (D1 < 35% for casual, < 25% for hardcore): Onboarding or first-session value is broken. Events should reinforce the core loop, not introduce new mechanics.
-- **D7 leak** (D7 < 15% for casual, < 10% for hardcore): Habit formation has failed. Events should create a daily reason to return — streaks, daily missions, time-gated rewards.
-- **D30 leak** (D30 < 5% for casual, < 3% for hardcore): The mid-game has no shape. Events should introduce progression, social mechanics, or competitive layers.
+- **D1 leak** (D1 < 35% for casual, < 30% for midcore, < 25% for hardcore): Onboarding or first-session value is broken. Events should reinforce the core loop, not introduce new mechanics.
+- **D7 leak** (D7 < 15% for casual, < 12% for midcore, < 10% for hardcore): Habit formation has failed. Events should create a daily reason to return — streaks, daily missions, time-gated rewards.
+- **D30 leak** (D30 < 5% for casual, < 4% for midcore, < 3% for hardcore): The mid-game has no shape. Events should introduce progression, social mechanics, or competitive layers.
 
-State the leak in one sentence. State your diagnosis confidence (high / medium / low). If the curve looks healthy across all three, say so and proceed to Step 1 with a maintenance focus instead of a recovery focus.
+Genre classification: casual = match-3, hyper-casual, word, idle. Midcore = RPG, strategy, builder, 4X. Hardcore = MOBA, shooter, competitive. When in doubt, apply the midcore threshold and state your classification in the diagnosis.
 
-Output of Step 0: one paragraph. The leak, the confidence, and the implication for the calendar.
+More than one metric can be in deficit simultaneously. If that happens, triage by priority: **D1 is always diagnosed first.** Events are D7+ mechanics by definition — they assume a player who has returned at least once. No downstream event can patch a broken first session. If D1 is in deficit, state it as the primary leak, note the other leaks, and add an explicit line that D1 requires a product or onboarding intervention outside the events track. The calendar targets D7 and D30 recovery for the players who survived D1 — not for the ones who didn't.
+
+State the leak (or leaks). State your diagnosis confidence (high / medium / low). If the curve looks healthy across all three, say so and proceed to Step 1 with a maintenance focus. Maintenance focus means the calendar's job is deepening engagement and unlocking monetisation moments for the established base, not rescuing a leaking curve.
+
+Output of Step 0: one paragraph. The leak(s), the confidence, and the implication for the calendar.
 
 ### Step 1 — Player segment first
 
@@ -81,7 +85,7 @@ Only now do you produce the 4-week calendar. Each event must include:
 - Lifecycle moment (from Step 2)
 - Objective (from Step 3)
 - Duration
-- Defensive note: one line on what this event protects against if it underperforms
+- Defensive note: one line naming the risk this event guards against if it underperforms — a dependency, a failure mode, or a fallback read. Not a description of what the event does; a description of what breaks if it doesn't work.
 
 Format the calendar as a table.
 
@@ -103,7 +107,7 @@ After the table, include a section called **Defence checks** — for every event
 
 1. **Diagnosis** (Step 0 — one paragraph)
 2. **Primary segment** (Step 1 — one paragraph)
-3. **Calendar** (Step 4 — a table covering 4 weeks, with all fields above)
+3. **Calendar** (Step 4 — a table covering 4 weeks; Steps 2 and 3 are embedded as columns in the table, not standalone sections)
 4. **Defence checks** (one line per event)
 5. **What this calendar does not solve** (a brief honest note on the gaps the calendar leaves open)
 
