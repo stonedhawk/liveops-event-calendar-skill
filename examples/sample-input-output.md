@@ -28,17 +28,19 @@ Habituating users (day 7 to 30), F2P primary, minnow secondary. This is the coho
 
 ### Calendar
 
+Mechanic types ruled out: **tournament**, because the last one ran 1 week ago and the 4-week window covers this whole calendar. The daily login streak keeps running in the background and is not a new event. Each event below uses a different mechanic type, so nothing repeats inside the 4 weeks either. Capacity used: 2 large events (Master Album, Squad Push) and 1 small (Comeback Chapter).
+
 | Week | Day | Event | Mechanic | Segment | Lifecycle | Objective | Duration | Defence note |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Mon | Master Series | 7-day mini-tournament with tier progression | F2P / minnow | Habituating (D7-D30) | Lift D30 | 7 days | If it underperforms, the tier completion data tells us whether the issue is reward thresholds or matchmaking depth |
+| 1 | Mon | Master Album | Collection (large): 7-day card-set album with tiered completion rewards | F2P / minnow | Habituating (D7-D30) | Lift D30 | 7 days | If completion stalls at the first tier, the reward thresholds are wrong; if completion is high and D30 still doesn't move, progression is not the lever |
 | 2 |  | (recovery week: no large event, daily streak continues) |  |  |  |  |  | Lets the cohort consume Week 1 results and prevents event fatigue |
-| 3 | Wed | Comeback Bonus | Return-and-win pop-up for users who skipped 3+ days | F2P | At-risk | Reactivate | 4 days | Catches the at-risk users before they cross the 14-day churn line |
-| 4 | Mon | Squad Push | Team-based goal with shared rewards | F2P / minnow | Habituating (D7-D30) | Drive social action | 7 days | Social ties compound retention across the D14-D30 critical window; if it fails, social mechanics are not the lever |
+| 3 | Wed | Comeback Chapter | Narrative (small, existing assets): 3-part story chapter unlocked for users who skipped 3+ days | F2P | At-risk | Reactivate | 4 days | Catches the at-risk users before they cross the 14-day churn line; if return rate is flat, the at-risk cohort needs a reward, not content |
+| 4 | Mon | Squad Push | Social (large): team-based goal with shared rewards | F2P / minnow | Habituating (D7-D30) | Drive social action | 7 days | Social ties compound retention across the D14-D30 critical window; if it fails, social mechanics are not the lever |
 
 ### Defence checks
 
-- **Master Series** ties to the D30 leak by giving habituating users a 7-day progression shape, exactly the missing structure between Week 1 and Week 4.
-- **Comeback Bonus** ties to the D30 leak by reducing churn at the at-risk handoff before users cross the 14-day inactivity line.
+- **Master Album** ties to the D30 leak by giving habituating users a 7-day progression shape, exactly the missing structure between Week 1 and Week 4.
+- **Comeback Chapter** ties to the D30 leak by reducing churn at the at-risk handoff before users cross the 14-day inactivity line.
 - **Squad Push** ties to the D30 leak because social bonds are the strongest known retention compounder for this lifecycle window in social card games.
 
 ### What this calendar does not solve

@@ -1,6 +1,6 @@
 # LiveOps Event Calendar Planner
 
-A structured prompt skill that diagnoses your retention curve before producing a single event. Built by [Rahul M Shah](https://www.linkedin.com/in/rahul-mshah) from his work shipping live events on mobile games at Moonfrog Labs, Parchis Club, and earlier studios.
+A structured prompt skill that diagnoses your retention curve before producing a single event. Built by [Rahul M Shah](https://www.linkedin.com/in/rahul-mshah) from his work shipping live events on mobile games at Moonfrog Labs and earlier studios.
 
 The repo has setup files for Claude (Project), ChatGPT (Custom GPT) and Gemini (Gem). It works with any current Claude, GPT or Gemini model.
 
