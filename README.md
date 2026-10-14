@@ -1,14 +1,14 @@
 # LiveOps Event Calendar Planner
 
-A structured prompt skill that diagnoses your retention curve before producing a single event. Built by [Rahul Shah](https://linkedin.com/in/rahul-mshah) from his work shipping live events on mobile games at Moonfrog Labs, Parchis Club, and earlier studios.
+A structured prompt skill that diagnoses your retention curve before producing a single event. Built by [Rahul M Shah](https://www.linkedin.com/in/rahul-mshah) from his work shipping live events on mobile games at Moonfrog Labs and earlier studios.
 
-Works on Claude, ChatGPT (Custom GPT), and Gemini (Gem).
+The repo has setup files for Claude (Project), ChatGPT (Custom GPT) and Gemini (Gem). It works with any current Claude, GPT or Gemini model.
 
 ---
 
 ## What this is
 
-This is a prompt skill — a structured system prompt you paste into your AI tool of choice. Once installed, it turns that tool into a LiveOps planning discipline: it refuses to skip to the calendar until it has diagnosed the retention curve, picked a segment, and locked in one objective per event.
+This is a prompt skill, a structured system prompt you paste into your AI tool of choice. Once installed, it turns that tool into a LiveOps planning discipline: it refuses to skip to the calendar until it has diagnosed the retention curve, picked a segment, and locked in one objective per event.
 
 It is not a template. It is not a calendar generator. It is a planning process encoded as a prompt.
 
@@ -27,44 +27,49 @@ It's a planning discipline, not a calendar template.
 ## What's in this repo
 
 ```
-liveops-event-calendar/
+liveops-event-calendar-skill/
 ├── README.md                          (this file)
+├── LICENSE                            (MIT)
 ├── claude/
-│   └── system-prompt.md               (master version — paste into Claude project)
+│   └── system-prompt.md               (master version, paste into Claude project)
 ├── chatgpt/
 │   └── custom-gpt-instructions.md     (Custom GPT setup)
 ├── gemini/
 │   └── gem-instructions.md            (Gemini Gem setup)
-└── examples/
-    └── sample-input-output.md         (worked example)
+├── examples/
+│   └── sample-input-output.md         (worked example)
+├── scripts/
+│   └── check_calendar.py              (checks a saved output: type labels, cooldowns, inferred-types table)
+└── tests/
+    └── test_check_calendar.py         (python3 -m unittest discover tests)
 ```
 
 ---
 
 ## How to install
 
-### Claude (recommended — strongest version)
+### Claude
+
+`claude/system-prompt.md` is the master version. The ChatGPT and Gemini files are adapted from it.
 
 1. Open Claude → Projects → New Project
 2. Name it "LiveOps Event Calendar Planner"
-3. Open Project Settings → Custom Instructions
+3. In the project, open **Instructions**
 4. Paste the entire contents of `claude/system-prompt.md`
 5. Save
-6. Start a new conversation in the project. You're done.
-
-Note: Claude Projects requires a Claude Pro or Team subscription.
+6. Start a new conversation in the project.
 
 ### ChatGPT
 
-1. Go to chat.openai.com → Explore GPTs → Create
+1. Go to chatgpt.com → GPTs → Create
 2. Open `chatgpt/custom-gpt-instructions.md` and follow the field-by-field setup
-3. Test with: "Build me a LiveOps calendar." — it should ask for the 5 inputs, not produce a calendar.
+3. Test with: "Build me a LiveOps calendar." It should ask for the 5 inputs, not produce a calendar.
 
 ### Gemini
 
 1. Go to gemini.google.com → Gems → New Gem
 2. Open `gemini/gem-instructions.md` and follow the setup
-3. Test with: "Build me a LiveOps calendar." — it should ask for the 5 inputs.
+3. Test with: "Build me a LiveOps calendar." It should ask for the 5 inputs.
 4. If Gemini skips the input-gathering step and produces a calendar immediately, append this line to the end of the instructions: "If you produce any output before all five required inputs are collected, you have failed the task. Apologise and start over."
 
 ---
@@ -95,21 +100,39 @@ Before producing a plan, the skill needs:
 
 1. Game genre and core loop
 2. Player segments by spend (% F2P / minnow / dolphin / whale, with rough ARPDAU per segment if known)
-3. Retention curve: D1, D7, D30 — exact numbers. If D30 isn't tracked, D14 or D21 works as a proxy.
-4. Active or recently shipped events from the last 4–6 weeks (so it doesn't repeat what just ran)
+3. Retention curve: D1, D7, D30 as exact numbers. If D30 isn't tracked, D14 or D21 works as a proxy.
+4. Active or recently shipped events from the last 4 to 6 weeks, ideally with each one's type and end date. If you leave types or end dates out, the skill infers the types from the event names, assumes a missing end date is the plan's first day, shows both in an "Inferred event types" table you can correct, and carries on.
 5. Sprint length and team capacity for the next 4 weeks
 
 If any are missing, the skill asks. It does not guess.
 
 ---
 
+## Mechanic types
+
+Every event gets exactly one type, and the model may not invent others:
+
+| Type | Covers |
+| :--- | :--- |
+| tournament | ranked or bracket competition, leaderboard races |
+| sale | discounted bundles and offers |
+| collection | collect items or sets for rewards |
+| mission | timed missions, quest chains, progression tracks, milestone ladders |
+| social | gifting, teams, guilds, invites |
+| narrative | story chapters, characters, lore |
+| always-on | features that run continuously: login streaks, season passes, daily quests |
+
+No event may start within 28 days after the end of the last event of the same type. A recent event's end date is the one you state, or its start plus a stated duration. Otherwise (for example "1 week ago" alone) the skill assumes it ended on the plan's first day, which blocks that type for the whole 4-week plan, and shows the assumed date so you can correct it. It never guesses a duration from an event's name. Always-on features are exempt from this cooldown. A timed mission or progression event counts as `mission` even while an always-on streak or daily quest runs.
+
+---
+
 ## What it produces
 
-1. **Diagnosis** — one paragraph identifying the retention leak and confidence level. Handles single leaks, multi-metric deficits, and healthy curves (maintenance mode).
-2. **Primary segment** — one paragraph picking the segment the calendar is built for and why
-3. **Calendar** — a 4-week table with launch date, event name, mechanic, segment, lifecycle moment, objective, duration, and a defensive note per event
-4. **Defence checks** — one line per event confirming it ties back to the Step 0 diagnosis
-5. **What this calendar does not solve** — honest note on gaps the calendar leaves open
+1. **Diagnosis**: one paragraph identifying the retention leak and confidence level. Handles single leaks, multi-metric deficits, and healthy curves (maintenance mode).
+2. **Primary segment**: one paragraph picking the segment the calendar is built for and why
+3. **Calendar**: a 4-week table with launch date, event name, type, mechanic, segment, lifecycle moment, objective, duration, and a defensive note per event
+4. **Defence checks**: one line per event confirming it ties back to the Step 0 diagnosis
+5. **What this calendar does not solve**: honest note on gaps the calendar leaves open
 
 ---
 
@@ -121,16 +144,17 @@ See `examples/sample-input-output.md` for a worked example with a social card ga
 
 ## Known limitations
 
-- **Events can't fix a D1 leak.** If D1 is below threshold, the skill will say so explicitly and build the calendar for D7/D30 survivors. But the root cause — broken onboarding or a weak first session — needs a product intervention, not a LiveOps event.
+- **Events can't fix a D1 leak.** If D1 is below threshold, the skill will say so explicitly and build the calendar for D7/D30 survivors. But the root cause, broken onboarding or a weak first session, needs a product intervention, not a LiveOps event.
 - **Capacity is self-reported.** The skill takes your word for what the team can ship. If you overstate capacity, the calendar will be overbuilt.
 - **The skill does not track what you've shipped.** It asks for recent events each session. It has no memory between conversations.
-- **Retention thresholds are benchmarks, not laws.** D1 35% is a reasonable casual floor — but a game with a very specific niche audience may perform differently. Use the thresholds as a starting frame, not an absolute verdict.
+- **The "(inferred)" marker can slip.** In 3 test runs with untyped recent events, every run inferred the right types, showed the table and respected the cooldown, but one did not mark one inferred type "(inferred)". Check the Inferred event types table before relying on it. `scripts/check_calendar.py OUTPUT.md --recent tournament:0 --expect-inferred --expect-assumed --expect-inferred-types` flags this.
+- **Retention thresholds are benchmarks, not laws.** D1 35% is a reasonable casual floor, but a game with a very specific niche audience may perform differently. Use the thresholds as a starting frame, not an absolute verdict.
 
 ---
 
 ## License
 
-MIT. Use it. Modify it. Fork it. Build a better one and send it back.
+MIT. See [LICENSE](LICENSE). Copyright (c) 2026 Rahul M Shah. Use it. Modify it. Fork it. Build a better one and send it back.
 
 ---
 
