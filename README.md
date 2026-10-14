@@ -97,10 +97,28 @@ Before producing a plan, the skill needs:
 1. Game genre and core loop
 2. Player segments by spend (% F2P / minnow / dolphin / whale, with rough ARPDAU per segment if known)
 3. Retention curve: D1, D7, D30 as exact numbers. If D30 isn't tracked, D14 or D21 works as a proxy.
-4. Active or recently shipped events from the last 4 to 6 weeks (the prompt tells it not to repeat a mechanic type within 4 weeks of its last run)
+4. Active or recently shipped events from the last 4 to 6 weeks, with their mechanic type (the prompt won't start an event within 28 days of the last event of the same type)
 5. Sprint length and team capacity for the next 4 weeks
 
 If any are missing, the skill asks. It does not guess.
+
+---
+
+## Mechanic types
+
+Every event gets exactly one type, and the model may not invent others:
+
+| Type | Covers |
+| :--- | :--- |
+| tournament | ranked or bracket competition, leaderboard races |
+| sale | discounted bundles and offers |
+| collection | collect items or sets for rewards |
+| mission | timed missions, quest chains, progression tracks, milestone ladders |
+| social | gifting, teams, guilds, invites |
+| narrative | story chapters, characters, lore |
+| always-on | features that run continuously: login streaks, season passes, daily quests |
+
+No event may start within 28 days of the start of the last event of the same type. Always-on features are exempt from this cooldown. A timed mission or progression event counts as `mission` even while an always-on streak or daily quest runs.
 
 ---
 
@@ -108,7 +126,7 @@ If any are missing, the skill asks. It does not guess.
 
 1. **Diagnosis**: one paragraph identifying the retention leak and confidence level. Handles single leaks, multi-metric deficits, and healthy curves (maintenance mode).
 2. **Primary segment**: one paragraph picking the segment the calendar is built for and why
-3. **Calendar**: a 4-week table with launch date, event name, mechanic, segment, lifecycle moment, objective, duration, and a defensive note per event
+3. **Calendar**: a 4-week table with launch date, event name, type, mechanic, segment, lifecycle moment, objective, duration, and a defensive note per event
 4. **Defence checks**: one line per event confirming it ties back to the Step 0 diagnosis
 5. **What this calendar does not solve**: honest note on gaps the calendar leaves open
 

@@ -9,7 +9,7 @@ A worked example to show what the skill produces when fed real-shaped data.
 > **Genre and core loop:** Social card game, daily play with weekend tournaments
 > **Segments:** 92% F2P, 5% minnow, 2.5% dolphin, 0.5% whale. ARPDAU $0.04
 > **Retention:** D1 38%, D7 14%, D30 4.5%
-> **Recent events:** Weekend tournament (1 week ago), daily login streak (running continuously)
+> **Recent events:** Weekend tournament (tournament, started 1 week ago), daily login streak (always-on, running continuously)
 > **Capacity:** 2 large events + 1 small event in the next 4 weeks (3-person team, 2-week sprints)
 
 ---
@@ -28,14 +28,14 @@ Habituating users (day 7 to 30), F2P primary, minnow secondary. This is the coho
 
 ### Calendar
 
-Mechanic types ruled out: **tournament**, because the last one ran 1 week ago and the 4-week window covers this whole calendar. The daily login streak keeps running in the background and is not a new event. Each event below uses a different mechanic type, so nothing repeats inside the 4 weeks either. Capacity used: 2 large events (Master Album, Squad Push) and 1 small (Comeback Chapter).
+On cooldown: **tournament** until Week 4, Day 1 (the last one started 1 week ago, so 28 days runs to the start of Week 4). The daily login streak is **always-on**, so it keeps running and blocks nothing. Each event below uses a different type. Capacity used: 2 large events (Master Album, Squad Push) and 1 small (Comeback Chapter).
 
-| Week | Day | Event | Mechanic | Segment | Lifecycle | Objective | Duration | Defence note |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Mon | Master Album | Collection (large): 7-day card-set album with tiered completion rewards | F2P / minnow | Habituating (D7-D30) | Lift D30 | 7 days | If completion stalls at the first tier, the reward thresholds are wrong; if completion is high and D30 still doesn't move, progression is not the lever |
-| 2 |  | (recovery week: no large event, daily streak continues) |  |  |  |  |  | Lets the cohort consume Week 1 results and prevents event fatigue |
-| 3 | Wed | Comeback Chapter | Narrative (small, existing assets): 3-part story chapter unlocked for users who skipped 3+ days | F2P | At-risk | Reactivate | 4 days | Catches the at-risk users before they cross the 14-day churn line; if return rate is flat, the at-risk cohort needs a reward, not content |
-| 4 | Mon | Squad Push | Social (large): team-based goal with shared rewards | F2P / minnow | Habituating (D7-D30) | Drive social action | 7 days | Social ties compound retention across the D14-D30 critical window; if it fails, social mechanics are not the lever |
+| Week | Day | Event | Type | Mechanic | Segment | Lifecycle | Objective | Duration | Defence note |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | Mon | Master Album | collection | Large: 7-day card-set album with tiered completion rewards | F2P / minnow | Habituating (D7-D30) | Lift D30 | 7 days | If completion stalls at the first tier, the reward thresholds are wrong; if completion is high and D30 still doesn't move, progression is not the lever |
+| 2 |  | (recovery week: no new event, daily streak continues) |  |  |  |  |  |  | Lets the cohort consume Week 1 results and prevents event fatigue |
+| 3 | Wed | Comeback Chapter | narrative | Small, existing assets: 3-part story chapter unlocked for users who skipped 3+ days | F2P | At-risk | Reactivate | 4 days | Catches the at-risk users before they cross the 14-day churn line; if return rate is flat, the at-risk cohort needs a reward, not content |
+| 4 | Mon | Squad Push | social | Large: team-based goal with shared rewards | F2P / minnow | Habituating (D7-D30) | Drive social action | 7 days | Social ties compound retention across the D14-D30 critical window; if it fails, social mechanics are not the lever |
 
 ### Defence checks
 
