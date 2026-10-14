@@ -97,7 +97,7 @@ Before producing a plan, the skill needs:
 1. Game genre and core loop
 2. Player segments by spend (% F2P / minnow / dolphin / whale, with rough ARPDAU per segment if known)
 3. Retention curve: D1, D7, D30 as exact numbers. If D30 isn't tracked, D14 or D21 works as a proxy.
-4. Active or recently shipped events from the last 4 to 6 weeks, with their mechanic type (the prompt won't start an event within 28 days of the last event of the same type)
+4. Active or recently shipped events from the last 4 to 6 weeks, ideally with each one's type and end date. If you leave the types out, the skill infers them from the event names, shows its guesses in a table, and carries on.
 5. Sprint length and team capacity for the next 4 weeks
 
 If any are missing, the skill asks. It does not guess.
@@ -118,7 +118,7 @@ Every event gets exactly one type, and the model may not invent others:
 | narrative | story chapters, characters, lore |
 | always-on | features that run continuously: login streaks, season passes, daily quests |
 
-No event may start within 28 days of the start of the last event of the same type. Always-on features are exempt from this cooldown. A timed mission or progression event counts as `mission` even while an always-on streak or daily quest runs.
+No event may start within 28 days after the end of the last event of the same type. If a recent event's end date is missing, the skill uses its start plus stated duration; if you give only one date ("1 week ago"), it treats that as the end; with no date at all, it assumes the event ended on the plan's first day. It never guesses a duration from an event's name. Always-on features are exempt from this cooldown. A timed mission or progression event counts as `mission` even while an always-on streak or daily quest runs.
 
 ---
 

@@ -9,7 +9,7 @@ A worked example to show what the skill produces when fed real-shaped data.
 > **Genre and core loop:** Social card game, daily play with weekend tournaments
 > **Segments:** 92% F2P, 5% minnow, 2.5% dolphin, 0.5% whale. ARPDAU $0.04
 > **Retention:** D1 38%, D7 14%, D30 4.5%
-> **Recent events:** Weekend tournament (tournament, started 1 week ago), daily login streak (always-on, running continuously)
+> **Recent events:** Weekend tournament (tournament, Fri to Sun, ended 5 days ago), daily login streak (always-on, running continuously)
 > **Capacity:** 2 large events + 1 small event in the next 4 weeks (3-person team, 2-week sprints)
 
 ---
@@ -28,7 +28,7 @@ Habituating users (day 7 to 30), F2P primary, minnow secondary. This is the coho
 
 ### Calendar
 
-On cooldown: **tournament** until Week 4, Day 1 (the last one started 1 week ago, so 28 days runs to the start of Week 4). The daily login streak is **always-on**, so it keeps running and blocks nothing. Each event below uses a different type. Capacity used: 2 large events (Master Album, Squad Push) and 1 small (Comeback Chapter).
+On cooldown: **tournament**, first possible start Week 4, Day 3 (the last one ended 5 days before Week 1, Day 1, and the cooldown runs 28 days from that end). The daily login streak is **always-on**, so it keeps running and blocks nothing. Each event below uses a different type. Capacity used: 2 large events (Master Album, Squad Push) and 1 small (Comeback Chapter).
 
 | Week | Day | Event | Type | Mechanic | Segment | Lifecycle | Objective | Duration | Defence note |
 |---|---|---|---|---|---|---|---|---|---|
