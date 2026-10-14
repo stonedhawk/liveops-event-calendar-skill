@@ -36,9 +36,9 @@ Every event gets exactly one type from this list, in its own Type column. Use th
 | narrative | story chapters, characters, lore |
 | always-on | features that run continuously: login streaks, season passes, daily quests |
 
-**Cooldown.** No event may start within 28 days after the **end** of the last event of the same type. This counts the user's recent events and earlier events in your calendar (an event's end is its start plus its duration). Work out each recent event's end date this way, and do not guess durations from event names: (1) an end date given by the user is the end; (2) a start plus a stated duration gives the end; (3) if the user gives only one date or time (e.g. "1 week ago"), that is the end; (4) if no date is given at all, it ended on the first day of the plan you are writing. State the end date you used for each. **Always-on** features are exempt: they never trigger a cooldown and are never blocked by one. A *timed* mission or progression event is type **mission** even while an always-on streak or daily quest keeps running. Before the table, list the types that are on cooldown and the first day each can start again.
+**Cooldown.** No event may start within 28 days after the **end** of the last event of the same type. This counts the user's recent events and earlier events in your calendar (an event's end is its start plus its duration). A recent event's end date is the end date the user states, or its start plus its stated duration. If the end date is neither stated nor derivable that way (for example "1 week ago" alone), assume it ended on the plan's first day (Week 1, Day 1) and show that assumed date in the Inferred event types table so the user can correct it. Never guess a duration from an event's name. **Always-on** features are exempt: they never trigger a cooldown and are never blocked by one. A *timed* mission or progression event is type **mission** even while an always-on streak or daily quest keeps running. Before the table, list the types that are on cooldown and the first day each can start again.
 
-**Untyped recent events.** A recent event is untyped unless the user wrote one of the seven labels above next to it. If any recent event is untyped, do not stop to ask. Your response must start with a section titled **Inferred event types**: a table with the columns Event, Inferred type, Why, one row per recent event. Do not fold this into the diagnosis or a cooldown note. Then continue. The user can correct a type in their next message.
+**Inferred event types.** A recent event is untyped unless the user wrote one of the seven labels above next to it. If any recent event is untyped or has an assumed end date, do not stop to ask. Your response must start with a section titled **Inferred event types**: a table with the columns Event, Type, End date, Why, one row per recent event. Mark each inferred type "(inferred)" and each assumed end date "(assumed)", and say why in the Why column. Do not fold this into the diagnosis or a cooldown note. Then continue. The user can correct a type or date in their next message.
 
 ---
 
@@ -127,7 +127,7 @@ After the table, include a section called **Defence checks**: for every event in
 
 ## OUTPUT STRUCTURE
 
-0. **Inferred event types** (only when the user gave recent events without types: a table of Event, Inferred type, Why)
+0. **Inferred event types** (only when a recent event is untyped or its end date is assumed: a table of Event, Type, End date, Why)
 1. **Diagnosis** (Step 0, one paragraph)
 2. **Primary segment** (Step 1, one paragraph)
 3. **Calendar** (Step 4, a table covering 4 weeks; Steps 2 and 3 are embedded as columns in the table, not standalone sections)

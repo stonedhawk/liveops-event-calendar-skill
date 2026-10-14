@@ -36,8 +36,12 @@ liveops-event-calendar-skill/
 │   └── custom-gpt-instructions.md     (Custom GPT setup)
 ├── gemini/
 │   └── gem-instructions.md            (Gemini Gem setup)
-└── examples/
-    └── sample-input-output.md         (worked example)
+├── examples/
+│   └── sample-input-output.md         (worked example)
+├── scripts/
+│   └── check_calendar.py              (checks a saved output: type labels, cooldowns, inferred-types table)
+└── tests/
+    └── test_check_calendar.py         (python3 -m unittest discover tests)
 ```
 
 ---
@@ -97,7 +101,7 @@ Before producing a plan, the skill needs:
 1. Game genre and core loop
 2. Player segments by spend (% F2P / minnow / dolphin / whale, with rough ARPDAU per segment if known)
 3. Retention curve: D1, D7, D30 as exact numbers. If D30 isn't tracked, D14 or D21 works as a proxy.
-4. Active or recently shipped events from the last 4 to 6 weeks, ideally with each one's type and end date. If you leave the types out, the skill infers them from the event names, shows its guesses in a table, and carries on.
+4. Active or recently shipped events from the last 4 to 6 weeks, ideally with each one's type and end date. If you leave types or end dates out, the skill infers the types from the event names, assumes a missing end date is the plan's first day, shows both in an "Inferred event types" table you can correct, and carries on.
 5. Sprint length and team capacity for the next 4 weeks
 
 If any are missing, the skill asks. It does not guess.
@@ -118,7 +122,7 @@ Every event gets exactly one type, and the model may not invent others:
 | narrative | story chapters, characters, lore |
 | always-on | features that run continuously: login streaks, season passes, daily quests |
 
-No event may start within 28 days after the end of the last event of the same type. If a recent event's end date is missing, the skill uses its start plus stated duration; if you give only one date ("1 week ago"), it treats that as the end; with no date at all, it assumes the event ended on the plan's first day. It never guesses a duration from an event's name. Always-on features are exempt from this cooldown. A timed mission or progression event counts as `mission` even while an always-on streak or daily quest runs.
+No event may start within 28 days after the end of the last event of the same type. A recent event's end date is the one you state, or its start plus a stated duration. Otherwise (for example "1 week ago" alone) the skill assumes it ended on the plan's first day, which blocks that type for the whole 4-week plan, and shows the assumed date so you can correct it. It never guesses a duration from an event's name. Always-on features are exempt from this cooldown. A timed mission or progression event counts as `mission` even while an always-on streak or daily quest runs.
 
 ---
 
@@ -143,6 +147,7 @@ See `examples/sample-input-output.md` for a worked example with a social card ga
 - **Events can't fix a D1 leak.** If D1 is below threshold, the skill will say so explicitly and build the calendar for D7/D30 survivors. But the root cause, broken onboarding or a weak first session, needs a product intervention, not a LiveOps event.
 - **Capacity is self-reported.** The skill takes your word for what the team can ship. If you overstate capacity, the calendar will be overbuilt.
 - **The skill does not track what you've shipped.** It asks for recent events each session. It has no memory between conversations.
+- **The "(inferred)" marker can slip.** In 3 test runs with untyped recent events, every run inferred the right types, showed the table and respected the cooldown, but one did not mark one inferred type "(inferred)". Check the Inferred event types table before relying on it. `scripts/check_calendar.py OUTPUT.md --recent tournament:0 --expect-inferred --expect-assumed --expect-inferred-types` flags this.
 - **Retention thresholds are benchmarks, not laws.** D1 35% is a reasonable casual floor, but a game with a very specific niche audience may perform differently. Use the thresholds as a starting frame, not an absolute verdict.
 
 ---
